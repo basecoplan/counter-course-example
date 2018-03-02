@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    background-color: #C0DEE2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  header {
+    background-color: #FF7360;
+    font-size: 2em;
+    padding: 0.5em;
+    font-weight: 500;
+  }
+
+  #container {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .area {
+    /* flex: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8em;
+
+    padding: 0.5em;
+    cursor: default;
+    user-select: none;
+
+    border-radius: 0.1em;
+  }
+
+</style>
+<body>
+  <header>
+    Counter
+  </header>
+  <div id='container'>
+    <div class='area' style="background-color: #FF7360">
+    </div>
+    <div class='area' style="background-color: #FFF0C6">
+    </div>
+    <div class='area ' style="background-color: #FFF9FA">
+    </div>
+    <div class='area' style="background-color: #53E5ED">
+    </div>
+  </div>
+  <script>
+    const format = (number) => {
+      if (number < 10) {
+        return '0' + number;
+      }
+      return String(number);
+    }
+    const areas = document.getElementsByClassName('area');
+    const counts = [];
+    for(let i = 0; i < areas.length; ++i) {
+      counts.push(0);
+      areas[i].addEventListener('click', () => {
+        ++counts[i];
+        areas[i].textContent = format(counts[i]);
+      });
+      areas[i].textContent = format(0);
+    }
+  </script>
+</body>
+</html>
